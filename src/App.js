@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import { Input } from "./components/Input";
+import { List } from "./components/List";
 
 function App() {
+  const tasks = useRef([]);
+
+  const addList = (task) => {
+    tasks.current.push(task);
+    localStorage.setItem("tasks", JSON.stringify(tasks.current));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-5 pt-5">
+      <div className="row justify-content-center">
+        <div className="col-4">
+          <h1 className="text-center mb-3">To Do List App</h1>
+          <Input addList={addList} />
+          <List tasks={tasks.current} />
+        </div>
+      </div>
     </div>
   );
 }
