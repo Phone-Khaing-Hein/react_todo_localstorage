@@ -1,21 +1,20 @@
-import { useEffect, useRef } from "react";
 
 export const List = ({ tasks }) => {
-  const taskList = useRef([]);
+  // const taskList = useRef([]);
 
-  useEffect(() => {
-    if (localStorage.getItem("tasks") != null) {
-      taskList.current = JSON.parse(localStorage.getItem("tasks"));
-    }
-  });
+  // useEffect(() => {
+  //   if (localStorage.getItem("tasks") != null) {
+  //     taskList.current = JSON.parse(localStorage.getItem("tasks"));
+  //   }
+  // });
 
   return (
     <div className="list-group">
-      {tasks.map((t) => (
+      {tasks.map((t, index) => (
         <button
           type="button"
           className="list-group-item list-group-item-action"
-          key={t}
+          key={index}
         >
           {t}
         </button>
