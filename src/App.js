@@ -7,18 +7,17 @@ function App() {
 
   useEffect(() => {
     let storeTasks = localStorage.getItem("tasks");
-    if(storeTasks != null) {
+    if (storeTasks != null) {
       setTasks(JSON.parse(storeTasks));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    console.log("hello");
     localStorage.setItem("tasks", JSON.stringify([...tasks]));
-  }, [tasks])
+  }, [tasks]);
 
   const addList = (task) => {
-    setTasks([...tasks, task])
+    setTasks([...tasks, task]);
   };
 
   return (
